@@ -7,35 +7,35 @@ pipeline{
                  echo 'github url checkout'
             }
         }
-        stage('codecompile with akshat'){
+        stage('codecompile with prajju'){
             steps{
                 echo 'starting compiling'
                 sh 'mvn compile'
             }
         }
-        stage('codetesting with akshat'){
+        stage('codetesting with prajju'){
             steps{
                 sh 'mvn test'
             }
         }
-        stage('qa with akshat'){
+        stage('qa with prajju'){
             steps{
                 sh 'mvn checkstyle:checkstyle'
             }
         }
-        stage('package with akshat'){
+        stage('package with prajju'){
             steps{
                 sh 'mvn package'
             }
         }
         stage('run dockerfile'){
           steps{
-               sh 'docker build -t myimg .'
+               sh 'docker build -t myimg1 .'
            }
          }
         stage('port expose'){
             steps{
-                sh 'docker run -dt -p 8091:8091 --name c000 myimg'
+                sh 'docker run -dt -p 8091:8091 --name c001 myimg1'
             }
         }   
     }
